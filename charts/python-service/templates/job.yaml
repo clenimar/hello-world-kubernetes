@@ -22,7 +22,7 @@ spec:
     spec:
       restartPolicy: "Never"
       imagePullSecrets:
-        - regcred
+        - name: regcred
       volumes: 
         - name: volumev1
       {{- if .Values.volumev1.persistence.enabled }}
