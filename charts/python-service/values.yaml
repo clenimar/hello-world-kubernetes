@@ -8,7 +8,7 @@ image: registry.scontain.com:5050/christof.fetzer/hw-k8s:python-k8-test-26858
 imagePullPolicy: Always
 
 imagePullSecrets:
-  - regcred
+  - name: regcred
 
 command: []
 
