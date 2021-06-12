@@ -1,0 +1,15 @@
+{{- if and .Values.volumev1.persistence.enabled (not .Values.volumev1.persistence.existingClaim) }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: volumev1-{{ include "sconify-python-service.fullname" . }}
+  labels:
+    {{- include "sconify-python-service.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - {{ .Values.volumev1.persistence.accessMode | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.volumev1.persistence.size | quote }}
+  {{ include "volumev1-sconify-python-service.storageClass" . }}
+{{- end -}}
