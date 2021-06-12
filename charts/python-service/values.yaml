@@ -6,8 +6,9 @@ replicaCount: 1
 
 image: registry.scontain.com:5050/christof.fetzer/hw-k8s:python-k8-test-26858
 imagePullPolicy: Always
+
 imagePullSecrets:
-  - name: regcred
+  - name: "regcred"
 
 command: []
 
