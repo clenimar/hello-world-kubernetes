@@ -23,7 +23,7 @@ spec:
       restartPolicy: "Never"
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
-        {{ toYaml . | nindent 8 }}
+        {{  tpl . $ | nindent 8 }}
       {{- end }}
       volumes: 
         - name: volumev1
