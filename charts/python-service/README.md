@@ -54,7 +54,7 @@ A complete list of parameters this chart supports.
 |Parameter|Description|Default|
 |---|---|---|
 `replicaCount`|How many replicas to deploy|`1`
-`image`|Workload image|`registry.scontain.com:5050/clenimar/test:python-k8-test-29370`
+`image`|Workload image|`registry.scontain.com:5050/clenimar/test:python-k8-test-30045`
 `imagePullPolicy`|Workload image pull policy|`Always`
 `imagePullSecrets`|Workload image pull secrets (to access private registries)|`[]`
 `nameOverride`|String to partially override sconify-python-service.fullname template with a string (will prepend the release name)|`nil`
@@ -66,7 +66,7 @@ A complete list of parameters this chart supports.
 |Parameter|Description|Default|
 |---|---|---|
 `scone.cas`|SCONE CAS address|`5-3-0.scone-cas.cf`
-`scone.configID`|SCONE config ID for the workload|`ns-19651751520310/python-session/python-service`
+`scone.configID`|SCONE config ID for the workload|`ns-22306827916194/python-session/python-service`
 `scone.allowDlOpen`|Value for SCONE_ALLOW_DLOPEN environment variable|`1`
 `scone.heap`|Value for SCONE_HEAP environment variable|`256m`
 `scone.stack`|Value for SCONE_STACK environment variable|`4m`

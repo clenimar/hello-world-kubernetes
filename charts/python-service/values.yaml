@@ -4,7 +4,7 @@
 
 replicaCount: 1
 
-image: registry.scontain.com:5050/clenimar/test:python-k8-test-29370
+image: registry.scontain.com:5050/clenimar/test:python-k8-test-30045
 imagePullPolicy: Always
 imagePullSecrets: []
 
@@ -17,7 +17,7 @@ scone:
   # SCONE CAS address (SCONE_CAS_ADDR environment variable ).
   cas: 5-3-0.scone-cas.cf
   # SCONE config ID (SCONE_CONFIG_ID environment variable).
-  configID: ns-19651751520310/python-session/python-service
+  configID: ns-22306827916194/python-session/python-service
   # Dynamic loaded libraries protection (SCONE_ALLOW_DLOPEN environment varible).
   allowDlOpen: 1
   # Protected heap size (SCONE_HEAP environment variable).

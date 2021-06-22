@@ -1,0 +1,5 @@
+helm:
+  imagePullSecrets:
+    - name: sconeapps
+  useSGXDevPlugin: scone
+  scone.log: DEBUG
