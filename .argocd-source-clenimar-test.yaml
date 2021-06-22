@@ -1,7 +1,7 @@
 helm:
   parameters:
   - name: imagePullSecrets[0].name
-    value: sconeapps
+    value: sconeapps3
   - name: useSGXDevPlugin
     value: scone
   - name: scone.log
