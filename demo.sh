@@ -113,10 +113,10 @@ while getopts ":hxvamncr:" opt; do
  esac
 done
 
-export GH_TOKEN=${GH_TOKEN:?"GH_TOKEN is not set! Please set to a valid github token."}
-export SCONE_HUB_ACCESS_TOKEN=${SCONE_HUB_ACCESS_TOKEN:?"SCONE_HUB_ACCESS_TOKEN is not set! Please set to a valid registry.scontain.com token."}
-export SCONE_HUB_USERNAME=${SCONE_HUB_USERNAME:?"SCONE_HUB_USERNAME is not set! Please set to a valid username for registry.scontain.com"}
-export SCONE_HUB_EMAIL=${SCONE_HUB_EMAIL:?"SCONE_HUB_EMAIL is not set! Please set to a valid username for registry.scontain.com"}
+#export GH_TOKEN=${GH_TOKEN:?"GH_TOKEN is not set! Please set to a valid github token."}
+#export SCONE_HUB_ACCESS_TOKEN=${SCONE_HUB_ACCESS_TOKEN:?"SCONE_HUB_ACCESS_TOKEN is not set! Please set to a valid registry.scontain.com token."}
+#export SCONE_HUB_USERNAME=${SCONE_HUB_USERNAME:?"SCONE_HUB_USERNAME is not set! Please set to a valid username for registry.scontain.com"}
+#export SCONE_HUB_EMAIL=${SCONE_HUB_EMAIL:?"SCONE_HUB_EMAIL is not set! Please set to a valid username for registry.scontain.com"}
 
 [[ $SWITCH_CLEAN == "yes" ]] && echo "Cleaning .." && clean
 [[ $SWITCH_AKS == "no" ]] && [[ $SWITCH_MINIKUBE == "no" ]]  && [[ $SWITCH_K8s == "no" ]] && echo "Please specify either -m (for minikube demo) or -a (for AKS demo) or -n (for Kubernetes)!" && exit 1
@@ -154,26 +154,26 @@ function prepare_host {
 
     [[ $SWITCH_MINIKUBE = "yes" ]] && minikube_start "2" "2g"
 
-    if ! helm search repo sconeapps > /dev/null
-    then
-        helm repo add sconeapps https://${GH_TOKEN}@raw.githubusercontent.com/scontain/sconeapps/master/
-        helm repo update
-        if ! helm search repo sconeapps > /dev/null
-        then
-            echo "You need to configure access to Scontain helm repo https://github.com/scontain/sconeapps/" && exit 1
-        fi
-    fi
+#    if ! helm search repo sconeapps > /dev/null
+#    then
+#        helm repo add sconeapps https://${GH_TOKEN}@raw.githubusercontent.com/scontain/sconeapps/master/
+#        helm repo update
+#        if ! helm search repo sconeapps > /dev/null
+#        then
+#            echo "You need to configure access to Scontain helm repo https://github.com/scontain/sconeapps/" && exit 1
+#        fi
+#    fi
 
-    if ! kubectl get secrets | grep $PULL_SECRET_NAME
-    then
-        kubectl create secret docker-registry $PULL_SECRET_NAME --docker-server=registry.scontain.com:5050 --docker-username=$SCONE_HUB_USERNAME --docker-password=$SCONE_HUB_ACCESS_TOKEN --docker-email=$SCONE_HUB_EMAIL 
-    fi
-
-    helm repo update
-    helm install my-sgxdevplugin sconeapps/sgxdevplugin
-    helm install my-las sconeapps/las
-
-    docker pull ${SCONIFY_IMAGE} || (echo "You need access to registry.scontain.com:5050" && exit 1)
+#    if ! kubectl get secrets | grep $PULL_SECRET_NAME
+#    then
+#        kubectl create secret docker-registry $PULL_SECRET_NAME --docker-server=registry.scontain.com:5050 --docker-username=$SCONE_HUB_USERNAME --docker-password=$SCONE_HUB_ACCESS_TOKEN --docker-email=$SCONE_HUB_EMAIL 
+#    fi
+#
+#    helm repo update
+#    helm install my-sgxdevplugin sconeapps/sgxdevplugin
+#    helm install my-las sconeapps/las
+#
+#    docker pull ${SCONIFY_IMAGE} || (echo "You need access to registry.scontain.com:5050" && exit 1)
 
     touch host_is_ready
     else
@@ -273,11 +273,11 @@ build_native_image
 
 sconification
 
-echo "..."
-
-[[ $SWITCH_MINIKUBE = "yes" ]] &&  minikube_image_load "$PYTHON_SCONIFIED_IMAGE" && minikube_recreate_pvc
-[[ $SWITCH_AKS = "yes" ]] && aks_recreate_pvc
-[[ $SWITCH_K8s = "yes" ]] && k8s_recreate_pvc
-
-sleep 10
-deploy_to_kubernets
+#echo "..."
+#
+#[[ $SWITCH_MINIKUBE = "yes" ]] &&  minikube_image_load "$PYTHON_SCONIFIED_IMAGE" && minikube_recreate_pvc
+#[[ $SWITCH_AKS = "yes" ]] && aks_recreate_pvc
+#[[ $SWITCH_K8s = "yes" ]] && k8s_recreate_pvc
+#
+#sleep 10
+#deploy_to_kubernets
